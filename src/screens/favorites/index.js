@@ -4,7 +4,7 @@ import Style from "../../utilis/AppStyle";
 
 const Favorites = () => {
     return(
-        <View>
+        <View style={Style.container}>
             <Text>Favorites</Text>
         </View>
     );

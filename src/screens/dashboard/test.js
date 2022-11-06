@@ -2,12 +2,12 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import Style from "../../utilis/AppStyle";
 
-const Profile = () => {
+const Test = () => {
     return(
         <View style={Style.container}>
-            <Text>Profile</Text>
+            <Text>Test</Text>
         </View>
     );
 }
 
-export default Profile;
+export default Test;

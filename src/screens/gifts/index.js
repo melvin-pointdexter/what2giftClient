@@ -4,7 +4,7 @@ import Style from "../../utilis/AppStyle";
 
 const Gifts= () => {
     return(
-        <View>
+        <View style={Style.container}>
             <Text>Gifts</Text>
         </View>
     );

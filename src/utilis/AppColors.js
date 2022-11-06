@@ -1,6 +1,6 @@
 export default {
     yellow: "#fedc88",
-    bg: "#eeeeef",
+    bg: "#efeffe",
     orange: "#f0a176",
     lavander: "#cdd0ff",
     white: "#ffffff",
