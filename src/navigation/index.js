@@ -12,6 +12,10 @@ import Gifts from "../screens/gifts";
 import Profile from "../screens/profile";
 import Favorites from "../screens/favorites";
 
+import Login from "../screens/account/login";
+import Signup from "../screens/account/signup";
+import Verify from "../screens/account/verify";
+
 //CREATE STACK
 const DashboardStackNavigator = createNativeStackNavigator();
 export const DashboardStack = () => {
@@ -20,6 +24,18 @@ export const DashboardStack = () => {
             <DashboardStackNavigator.Screen name="dashboard" component={Dashboard}/>
             <DashboardStackNavigator.Screen name="Test" component={Test}/>
         </DashboardStackNavigator.Navigator>
+    );
+};
+
+//ACCOUNT STACK
+const AccountStackNavigator = createNativeStackNavigator();
+export const AccountStack = () => {
+    return(
+        <AccountStackNavigator.Navigator>
+            <AccountStackNavigator.Screen name="login" component={Login}/>
+            <AccountStackNavigator.Screen name="signup" component={Signup}/>
+            <AccountStackNavigator.Screen name="verify" component={Verify}/>
+        </AccountStackNavigator.Navigator>
     );
 };
 
