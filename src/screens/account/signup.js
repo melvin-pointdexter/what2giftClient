@@ -8,14 +8,14 @@ const Signup = (props) => {
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    
+
     return (
         <View style={Style.container}>
             <Text style={Style.title}>Sign up</Text>
-            <TextInput placeholder="Email" keyboardType="email-address" style={Style.txtInput}/>
-            <TextInput placeholder="Password" style={Style.txtInput} secureTextEntry={true} />
-            <TextInput placeholder="First Name" style={Style.txtInput} />
-            <TextInput placeholder="Last Name" style={Style.txtInput} />
+            <TextInput value={email} onChangeText={text => {setEmail(text)}} placeholder="Email" keyboardType="email-address" style={Style.txtInput}/>
+            <TextInput value={password} onChangeText={text => {setPassword(text)}} placeholder="Password" style={Style.txtInput} secureTextEntry={true} />
+            <TextInput value={firstName} onChangeText={text => {setFirstName(text)}} placeholder="First Name" style={Style.txtInput} />
+            <TextInput value={lastName} onChangeText={text => {setLastName(text)}} placeholder="Last Name" style={Style.txtInput} />
             <TouchableOpacity style={Style.button} onPress={() => {props.navigation.navigate("verify")}}>
                 <Text>Sign Up</Text>
             </TouchableOpacity>
