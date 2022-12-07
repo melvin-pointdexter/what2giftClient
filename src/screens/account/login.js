@@ -1,6 +1,8 @@
 import react, {useState, useEffect} from "react";
 import {View, Text, TextInput, TouchableOpacity, ActivityIndicator,Alert} from "react-native";
 import Style from "../../utilis/AppStyle";
+import * as actions from "../../../store/actions";
+import {useDispatch} from "react-redux";
 
 const Login = (props) => {
 
@@ -8,6 +10,7 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
+    const dispatch = useDispatch();
 
     useEffect( () => {
         if (errorMsg){
@@ -17,7 +20,20 @@ const Login = (props) => {
 
     const login = async() => {
         setIsLoading(true);
-        if (email!="" && password!=""){
+        if (email != "" && password!= ""){
+            const action = actions.login(email,password);
+            try{
+                dispatch(action);
+                setIsLoading(false);
+            } catch (error){
+                setIsLoading(false);
+                setErrorMsg("Email and password are required");
+            }
+        }else {
+            setIsLoading(false);
+            setErrorMsg("Email and password are required");
+        }
+        /*if (email!="" && password!=""){
             try{
                 const host = "10.100.8.13";     //"localhost"
                 const url = "http://"+host+":9001/api/account/login";
@@ -46,7 +62,7 @@ const Login = (props) => {
         else{
             setIsLoading(false);
             setErrorMsg("All fields required");
-        }
+        }*/
     };
 
     return (
