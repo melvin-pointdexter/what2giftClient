@@ -17,7 +17,7 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const App = () => {
 
-  const [isLogin,setIsLogin] = useState(false);
+  const [isLogin,setIsLogin] = useState(true);
   const [token, setToken] = useState('');
 
   const getDataFromAsync = useCallback(async () => {

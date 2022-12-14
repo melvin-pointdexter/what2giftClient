@@ -1,10 +1,12 @@
-import React from 'react';
-import {View, Text} from 'react-native';
-import { Button } from 'react-native-paper';
-import Style from "../../utilis/AppStyle";
-import {useDispatch, useSelector} from "react-redux";
-import * as actions from "../../../store/actions";
-import * as Location from "expo-location";
+import React, {useEffect,useCallback, useState} from 'react'
+import { View, Text, Button, Alert} from 'react-native';
+import Style from '../../utilis/AppStyle';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Colors from '../../utilis/AppColors';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../../store/actions';
+import * as Location from 'expo-location';
 
 const Dashboard = (props) => {
 

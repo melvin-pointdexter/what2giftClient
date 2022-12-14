@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-async-storage"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const GET_OVERVIEW = 'GET_OVERVIEW';
