@@ -8,6 +8,14 @@ export default StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
     },
+    fullContainer:{
+        flex:1,
+        backgroundColor: Colors.bg,
+        justifyContent:"center",
+        alignItems:"center",
+        width:"100%",
+        height: "100%",
+    },
     title:{
         fontSize: 30,
         marginBottom:20,

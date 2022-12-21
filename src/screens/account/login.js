@@ -4,8 +4,11 @@ import Style from "../../utilis/AppStyle";
 import * as actions from "../../../store/actions";
 import {useDispatch} from "react-redux";
 
+import firebase from "../../utilis/firebaseConfig";
+
 const Login = (props) => {
 
+    const [loginView, setLoginView] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -21,13 +24,14 @@ const Login = (props) => {
     const login = async() => {
         setIsLoading(true);
         if (email != "" && password!= ""){
-            const action = actions.login(email,password);
+            //const action = actions.login(email,password);
             try{
-                dispatch(action);
+                //dispatch(action);
+                const user = await firebase.auth().signInWithEmailAndPassword(email, password);
                 setIsLoading(false);
             } catch (error){
                 setIsLoading(false);
-                setErrorMsg("Email and password are required");
+                setErrorMsg(error.message);
             }
         }else {
             setIsLoading(false);
@@ -65,19 +69,57 @@ const Login = (props) => {
         }*/
     };
 
+    const signup = async() => {
+        setIsLoading(true);
+        if (email != "" && password!= ""){
+            //const action = actions.login(email,password);
+            try{
+                const user = await firebase.auth().createUserWithEmailAndPassword(email,password);
+                //dispatch(action);
+                setIsLoading(false);
+            } catch (error){
+                setIsLoading(false);
+                setErrorMsg(error.message);
+            }
+        }else {
+            setIsLoading(false);
+            setErrorMsg("Email and password are required");
+        }
+    };
+
     return (
         <View style={Style.container}>
-            <Text style={Style.title}>Log In</Text>
-            <TextInput value={email} onChangeText={text => {setEmail(text)}} placeholder="Email" keyboardType="email-address" style={Style.txtInput}/>
-            <TextInput value={password} onChangeText={text => {setPassword(text)}} placeholder="Password" style={Style.txtInput} secureTextEntry={true} />
             {
-                isLoading ? (<ActivityIndicator color="#995555" size="large"/>) :  (<TouchableOpacity style={Style.button} onPress={login}>
-                <Text>Log In</Text >
-            </TouchableOpacity>)
+                loginView ? 
+            (<View style={Style.fullContainer}>
+                <Text style={Style.title}>Log In</Text>
+                <TextInput value={email} onChangeText={text => {setEmail(text)}} placeholder="Email" keyboardType="email-address" style={Style.txtInput}/>
+                <TextInput value={password} onChangeText={text => {setPassword(text)}} placeholder="Password" style={Style.txtInput} secureTextEntry={true} />
+                {
+                    isLoading ? (<ActivityIndicator color="#995555" size="large"/>) :  (<TouchableOpacity style={Style.button} onPress={login}>
+                    <Text>Log In</Text >
+                </TouchableOpacity>)
+                }
+                <TouchableOpacity onPress={() => {setLoginView(false)}}>
+                    <Text>Don't have an account? Sign Up!</Text>
+                </TouchableOpacity>
+            </View>)
+            :
+            (<View style={Style.fullContainer}>
+                <Text style={Style.title}>Sign Up</Text>
+                <TextInput value={email} onChangeText={text => {setEmail(text)}} placeholder="Email" keyboardType="email-address" style={Style.txtInput}/>
+                <TextInput value={password} onChangeText={text => {setPassword(text)}} placeholder="Password" style={Style.txtInput} secureTextEntry={true} />
+                {
+                    isLoading ? (<ActivityIndicator color="#995555" size="large"/>) :  (<TouchableOpacity style={Style.button} onPress={signup}>
+                    <Text>Sign Up</Text >
+                </TouchableOpacity>
+                )
+                }
+                <TouchableOpacity onPress={() => {setLoginView(true)}}>
+                    <Text>Have an account? Log In!</Text>
+                </TouchableOpacity>
+            </View>)
             }
-            <TouchableOpacity onPress={() => {props.navigation.navigate("signup")}}>
-                <Text>Sign Up</Text>
-            </TouchableOpacity>
         </View>
     );
 };
