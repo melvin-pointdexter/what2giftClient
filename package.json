@@ -17,17 +17,17 @@
     "expo": "~46.0.16",
     "expo-location": "^15.0.1",
     "expo-status-bar": "~1.4.0",
+    "firebase": "^8.6.1",
     "react": "18.0.0",
     "react-native": "^0.69.6",
     "react-native-paper": "^4.12.5",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-screens": "^3.18.2",
+    "react-native-tag-autocomplete": "^1.0.22",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
-    "react-tag-autocomplete": "^6.3.0",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.2",
-    "firebase": "^8.6.1"
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
