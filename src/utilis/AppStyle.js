@@ -17,8 +17,12 @@ export default StyleSheet.create({
         height: "100%",
     },
     title:{
-        fontSize: 30,
+        fontSize:30,
         marginBottom:20,
+    },
+    subtitle:{
+        fontSize:20,
+        marginBottom:5,
     },
     txtInput:{
         backgroundColor: Colors.white,
